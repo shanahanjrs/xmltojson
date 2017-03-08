@@ -8,7 +8,7 @@ setup(
     author=xmltojson.__author__,
     author_email='shanahan.jrs@gmail.com',
     license=xmltojson.__license__,
-    description='',
+    description='Simple command line tool to convert xml into json using xmltodict',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
