@@ -2,13 +2,13 @@ from setuptools import setup, find_packages
 import xmltojson
 
 setup(
-    name='xmltojson',
+    name=xmltojson.__name__,
     version=xmltojson.__version__,
-    url='https://github.com/shanahanjrs/xmltojson',
+    url=xmltojson.__url__,
     author=xmltojson.__author__,
-    author_email='shanahan.jrs@gmail.com',
+    author_email=xmltojson.__author_email__,
     license=xmltojson.__license__,
-    description='Simple command line tool to convert xml into json using xmltodict',
+    description=xmltojson.__description_long__,
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
@@ -19,7 +19,7 @@ setup(
     install_requires=[
         'xmltodict'
     ],
-    keywords='xml to json converter',
+    keywords=xmltojson.__keywords__,
     include_package_data=True,
     packages=find_packages(),
     py_modules=['xmltojson'],

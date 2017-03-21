@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-
 """
 Simple command line tool to convert xml into json using xmltodict
 """
@@ -16,14 +15,20 @@ Simple command line tool to convert xml into json using xmltodict
 
 # --- Setup
 
-import sys
-import os
-import xmltodict
 import json
+import os
+import sys
+import xmltodict
 
+__name__ = 'xmltojson'
 __author__ = 'John Shanahan'
+__author_email__ = 'shanahan.jrs@gmail.com'
 __version__ = '0.1.1'
 __license__ = 'Apache'
+__url__ = 'https://github.com/shanahanjrs/xmltojson'
+__description_long__ = """Xmltojson is a Python module and command line application to quickly convert
+xml text or files into json."""
+__keywords__ = 'xml to json converter'
 
 
 # --- Def
