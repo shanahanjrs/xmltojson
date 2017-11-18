@@ -1,6 +1,8 @@
 from setuptools import setup, find_packages
 import xmltojson
 
+install_reqs = ['xmltodict']
+
 setup(
     name=xmltojson.__name__,
     version=xmltojson.__version__,
@@ -21,7 +23,8 @@ setup(
     ],
     keywords=xmltojson.__keywords__,
     include_package_data=True,
-    packages=find_packages(),
+    install_requires=install_reqs,
+    packages=find_packages('.'),
     py_modules=['xmltojson'],
     scripts=['xmltojson.py']
 )
