@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """
 Simple command line tool to convert xml into json using xmltodict
@@ -19,17 +19,6 @@ import json
 import os
 import sys
 import xmltodict
-
-__name__ = 'xmltojson'
-__author__ = 'John Shanahan'
-__author_email__ = 'shanahan.jrs@gmail.com'
-__version__ = '0.1.1'
-__license__ = 'Apache'
-__url__ = 'https://github.com/shanahanjrs/xmltojson'
-__description_long__ = """Xmltojson is a Python module and command line application to quickly convert
-xml text or files into json."""
-__keywords__ = 'xml to json converter'
-
 
 # --- Def
 
@@ -87,39 +76,41 @@ def parse(xml_string):
     """
     return json.dumps(xmltodict.parse(xml_string))
 
+def _main():
 
-if __name__ == "__main__":
-
-    if len(sys.argv) > 1:
-
-        xml_filename = sys.argv[1]
-
-        option_version = ['v', '-v', '--v', 'version', '-version', '--version']
-        option_file = ['f', '-f', '--f', 'file', '-file', '--file']
-
-        if _lists_share_element(sys.argv, option_version):
-            _usage()
-            sys.exit()
-
-        if not os.path.exists(xml_filename):
-            print('File not found...')
-            sys.exit(1)
-
-        # Create filename for json output file
-        json_filename = _tr_xml_to_json_extension(xml_filename)
-
-        # Grab xml from file
-        xml_string = _read_xml_file(xml_filename)
-
-        # Translate xml to json from the string we got
-        json_obj = parse(xml_string)
-
-        # Create json output file
-        if _lists_share_element(sys.argv, option_file):
-            _write_output_file(json_filename, json_obj)
-        else:
-            print(json_obj)
-
-    else:
+    if not len(sys.argv) > 1:
         print('xml filename required...')
         sys.exit(1)
+
+    xml_filename = sys.argv[1]
+
+    option_version = ['v', '-v', '--v', 'version', '-version', '--version']
+    option_file = ['f', '-f', '--f', 'file', '-file', '--file']
+
+    if _lists_share_element(sys.argv, option_version):
+        _usage()
+        sys.exit()
+
+    if not os.path.exists(xml_filename):
+        print('File not found...')
+        sys.exit(1)
+
+    # Create filename for json output file
+    json_filename = _tr_xml_to_json_extension(xml_filename)
+
+    # Grab xml from file
+    xml_string = _read_xml_file(xml_filename)
+
+    # Translate xml to json from the string we got
+    json_obj = parse(xml_string)
+
+    # Create json output file
+    if _lists_share_element(sys.argv, option_file):
+        _write_output_file(json_filename, json_obj)
+    else:
+        print(json_obj)
+
+
+if __name__ == "__main__":
+    _main()
+
