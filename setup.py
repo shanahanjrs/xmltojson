@@ -32,5 +32,5 @@ setup(
     include_package_data=True,
     packages=find_packages('.'),
     py_modules=['xmltojson'],
-    scripts=['xmltojson.py']
+    scripts=['xmltojson.py', 'scripts/xmltojson']
 )
