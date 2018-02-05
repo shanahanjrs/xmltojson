@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 __name__ = 'xmltojson'
 __author__ = 'John Shanahan'
 __author_email__ = 'shanahan.jrs@gmail.com'
-__version__ = '0.1.2'
+__version__ = '0.1.3'
 __license__ = 'Apache'
 __url__ = 'https://github.com/shanahanjrs/xmltojson'
 __description_long__ = """Xmltojson is a Python module and command line application to quickly convert
