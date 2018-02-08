@@ -9,7 +9,7 @@ Cli tool to convert XML to JSON
 ## To use
 
 ### Command line:
-`$ xmltojson.py <filename.xml>`
+`$ xmltojson <filename.xml>`
 
 ### Py module:
 ```
