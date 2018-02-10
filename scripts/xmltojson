@@ -1,40 +1,58 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
 import os
 import sys
 
 import xmltojson
+import utils
 
+def _get_input():
+
+    # STDIN support
+    if '--stdin' in sys.argv:
+        # Get input from stdin
+        with sys.stdin as f:
+            xml_str = f.read()
+
+    # file input
+    else: 
+        with open(sys.argv[1], 'r') as f:
+            xml_str = f.read()
+
+    return xml_str
+
+def _get_input_filename():
+    if len(sys.argv) > 1:
+        filename = sys.argv[1]
+    else:
+        filename = 'out.xml'
+
+    return filename
+    
 def main():
 
-    if not len(sys.argv) > 1:
-        print('xml filename required...')
-        sys.exit(1)
-
-    xml_filename = sys.argv[1]
-
-    option_version = ['v', '-v', '--v', 'version', '-version', '--version']
-    option_file = ['f', '-f', '--f', 'file', '-file', '--file']
-
-    if xmltojson._lists_share_element(sys.argv, option_version):
+    if len(sys.argv) < 2:
         xmltojson._usage()
-        sys.exit()
-
-    if not os.path.exists(xml_filename):
-        print('File not found...')
         sys.exit(1)
+
+    # version num output
+    if '-v' in sys.argv or '--version' in sys.argv:
+        print(utils.__version__)
+        sys.exit(0)
+
+    xml_str = _get_input()
+    filename = _get_input_filename()
 
     # Create filename for json output file
-    json_filename = xmltojson._tr_xml_to_json_extension(xml_filename)
-
-    # Grab xml from file
-    xml_string = xmltojson._read_xml_file(xml_filename)
+    json_filename = xmltojson._tr_xml_to_json_extension(filename)
 
     # Translate xml to json from the string we got
-    json_obj = xmltojson.parse(xml_string)
+    json_obj = xmltojson.parse(xml_str)
 
     # Create json output file
-    if xmltojson._lists_share_element(sys.argv, option_file):
+    if '-o' in sys.argv:
+        json_filename = sys.argv[sys.argv.index('-o')+1]
         xmltojson._write_output_file(json_filename, json_obj)
     else:
         print(json_obj)

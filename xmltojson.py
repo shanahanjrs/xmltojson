@@ -20,14 +20,22 @@ import os
 import sys
 import xmltodict
 
+import utils
+
 # --- Def
 
 def _usage():
-    print('xmltojson {version}'.format(version=__version__))
-    print('Usage: xmltojson.py <example.xml> [options]')
+    print('xmltojson {version}'.format(version=utils.__version__))
+    print('shanahan.jrs@gmail.com')
+    print()
+    print('Usage:')
+    print('    $ xmltojson <example.xml> [options]')
+    print('    $ echo "<name>John</name>" | xmltojson --stdin [options]')
+    print()
     print('Options:')
     print('    --version -v              Version number')
-    print('    --file                    Output to file instead of STDOUT')
+    print('    -o                        Output to file instead of STDOUT')
+    print()
 
 
 def _read_xml_file(filename):
@@ -75,42 +83,4 @@ def parse(xml_string):
     Takes an xml string and returns the json equivalent
     """
     return json.dumps(xmltodict.parse(xml_string))
-
-def _main():
-
-    if not len(sys.argv) > 1:
-        print('xml filename required...')
-        sys.exit(1)
-
-    xml_filename = sys.argv[1]
-
-    option_version = ['v', '-v', '--v', 'version', '-version', '--version']
-    option_file = ['f', '-f', '--f', 'file', '-file', '--file']
-
-    if _lists_share_element(sys.argv, option_version):
-        _usage()
-        sys.exit()
-
-    if not os.path.exists(xml_filename):
-        print('File not found...')
-        sys.exit(1)
-
-    # Create filename for json output file
-    json_filename = _tr_xml_to_json_extension(xml_filename)
-
-    # Grab xml from file
-    xml_string = _read_xml_file(xml_filename)
-
-    # Translate xml to json from the string we got
-    json_obj = parse(xml_string)
-
-    # Create json output file
-    if _lists_share_element(sys.argv, option_file):
-        _write_output_file(json_filename, json_obj)
-    else:
-        print(json_obj)
-
-
-if __name__ == "__main__":
-    _main()
 
