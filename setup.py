@@ -18,7 +18,7 @@ setup(
         'Operating System :: POSIX :: Linux'
     ],
     install_requires=[
-        'xmltodict'
+        'xmltodict', 'utils'
     ],
     keywords=utils.__keywords__,
     include_package_data=True,
