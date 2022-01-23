@@ -4,10 +4,10 @@
 Simple command line tool to convert xml into json using xmltodict
 """
 
-# xmltojson
+# cli.py
 # John Shanahan
 # Usage:
-#     xmltojson.py <example.xml> [options]
+#     cli.py.py <example.xml> [options]
 # Options:
 #    --version -v              Version number
 #    --file                    Output to file instead of STDOUT
@@ -16,21 +16,20 @@ Simple command line tool to convert xml into json using xmltodict
 # --- Setup
 
 import json
-import os
-import sys
-import xmltodict
+import xmltodict # type: ignore
 
 import utils
 
 # --- Def
 
-def _usage():
-    print('xmltojson {version}'.format(version=utils.__version__))
+
+def _usage() -> None:
+    print('cli.py {version}'.format(version=utils.__version__))
     print('shanahan.jrs@gmail.com')
     print()
     print('Usage:')
-    print('    $ xmltojson <example.xml> [options]')
-    print('    $ echo "<name>John</name>" | xmltojson --stdin [options]')
+    print('    $ cli.py <example.xml> [options]')
+    print('    $ echo "<name>John</name>" | cli.py --stdin [options]')
     print()
     print('Options:')
     print('    --version -v              Version number')
@@ -38,7 +37,7 @@ def _usage():
     print()
 
 
-def _read_xml_file(filename):
+def _read_xml_file(filename: str) -> str:
     """ _read_xml_file
     Takes a filename and reads it and returns the contents
     """
@@ -50,7 +49,7 @@ def _read_xml_file(filename):
     return ret
 
 
-def _tr_xml_to_json_extension(xml_filename):
+def _tr_xml_to_json_extension(xml_filename: str) -> str:
     """ _tr_xml_to_json_extension
     Translates example.xml to example.json (just the filename)
     """
@@ -61,7 +60,7 @@ def _tr_xml_to_json_extension(xml_filename):
         return xml_filename + '.json'
 
 
-def _write_output_file(json_filename, json_contents):
+def _write_output_file(json_filename: str, json_contents: str) -> None:
     """ _write_output_file
     Just writes text to a file.
     """
@@ -71,14 +70,14 @@ def _write_output_file(json_filename, json_contents):
         file_obj.close()
 
 
-def _lists_share_element(list_a, list_b):
+def _lists_share_element(list_a: list, list_b: list) -> bool:
     """ _lists_share_element
     Check if list_a shares and element with list_b
     """
     return not set(list_a).isdisjoint(list_b)
 
 
-def parse(xml_string):
+def parse(xml_string: str) -> str:
     """ parse
     Takes an xml string and returns the json equivalent
     """

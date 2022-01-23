@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
-import os
 import sys
+import os
 
 import xmltojson
 import utils
 
-def _get_input():
+
+def _get_input() -> str:
 
     # STDIN support
     if '--stdin' in sys.argv:
@@ -17,20 +17,22 @@ def _get_input():
 
     # file input
     else: 
-        with open(sys.argv[1], 'r') as f:
+        with open(os.getcwd() + '/' + sys.argv[1], 'r') as f:
             xml_str = f.read()
 
     return xml_str
 
-def _get_input_filename():
+
+def _get_input_filename() -> str:
     if len(sys.argv) > 1:
         filename = sys.argv[1]
     else:
         filename = 'out.xml'
 
     return filename
-    
-def main():
+
+
+def main() -> None:
 
     if len(sys.argv) < 2:
         xmltojson._usage()
@@ -42,12 +44,6 @@ def main():
         sys.exit(0)
 
     xml_str = _get_input()
-    filename = _get_input_filename()
-
-    # Create filename for json output file
-    json_filename = xmltojson._tr_xml_to_json_extension(filename)
-
-    # Translate xml to json from the string we got
     json_obj = xmltojson.parse(xml_str)
 
     # Create json output file
