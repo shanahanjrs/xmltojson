@@ -18,13 +18,13 @@ Simple command line tool to convert xml into json using xmltodict
 import json
 import xmltodict # type: ignore
 
-import utils
+# import utils
 
 # --- Def
 
 
 def _usage() -> None:
-    print('cli.py {version}'.format(version=utils.__version__))
+#     print('cli.py {version}'.format(version=utils.__version__))
     print('shanahan.jrs@gmail.com')
     print()
     print('Usage:')
