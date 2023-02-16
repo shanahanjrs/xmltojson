@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "xmltojson"
-version = "2.0.1"
+version = "2.0.2"
 description = "A Python module and cli tool to quickly convert xml text or files into json"
 authors = ["John Shanahan <shanahan.jrs@gmail.com>"]
 maintainers = ["John Shanahan <shanahan.jrs@gmail.com>"]
