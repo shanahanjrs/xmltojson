@@ -4,7 +4,7 @@
 
 Python library and cli tool for converting XML to JSON
 
-[![Downloads](https://static.pepy.tech/personalized-badge/xmltojson?period=total&units=international_system&left_color=grey&right_color=brightgreen&left_text=Installs)](https://pepy.tech/project/xmltojson)
+[![Downloads](https://static.pepy.tech/personalized-badge/xmltojson?period=total&units=international_system&left_color=grey&right_color=brightgreen&left_text=Installs)](https://pepy.tech/badge/xmltojson)
 
 ## Install
 
