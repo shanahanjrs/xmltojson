@@ -4,7 +4,7 @@ import sys
 import os
 
 import xmltojson
-import utils
+# import utils
 
 
 def _get_input() -> str:
@@ -40,7 +40,7 @@ def main() -> None:
 
     # version num output
     if '-v' in sys.argv or '--version' in sys.argv:
-        print(utils.__version__)
+#         print(utils.__version__)
         sys.exit(0)
 
     xml_str = _get_input()
