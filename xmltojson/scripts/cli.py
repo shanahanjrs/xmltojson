@@ -1,15 +1,13 @@
-#!/usr/bin/env python3
-
 import sys
 import os
-
 import xmltojson
-import utils
 
 
 def _get_input() -> str:
-
-    # STDIN support
+    """
+    Reads xml from stdin or opens the specified file
+    """
+    # STDIN
     if '--stdin' in sys.argv:
         # Get input from stdin
         with sys.stdin as f:
@@ -24,6 +22,9 @@ def _get_input() -> str:
 
 
 def _get_input_filename() -> str:
+    """
+    returns the output filename if it was specified by the user, or default if not
+    """
     if len(sys.argv) > 1:
         filename = sys.argv[1]
     else:
@@ -40,7 +41,7 @@ def main() -> None:
 
     # version num output
     if '-v' in sys.argv or '--version' in sys.argv:
-        print(utils.__version__)
+        print(xmltojson.__version__)
         sys.exit(0)
 
     xml_str = _get_input()
